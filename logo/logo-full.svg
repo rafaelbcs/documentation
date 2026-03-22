@@ -1,0 +1,5 @@
+<svg width="160" height="36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <image href="/logo/logo.png" x="0" y="0" width="36" height="36"/>
+  <text x="44" y="25" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="19" fill="white" letter-spacing="-0.4">Agent</text>
+  <text x="100" y="25" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="19" fill="#4F6EF7" letter-spacing="-0.4">Rep</text>
+</svg>
