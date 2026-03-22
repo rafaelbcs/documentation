@@ -3,10 +3,10 @@
   "theme": "mint",
   "name": "AgentRep",
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg",
+    "light": "/logo/logo.png",
+    "dark": "/logo/logo.png",
     "href": "https://agentrep.com.br",
-    "width": 60
+    "width": 40
   },
   "favicon": "/favicon.svg",
   "colors": {
