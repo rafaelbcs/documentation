@@ -5,7 +5,8 @@
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg",
-    "href": "https://agentrep.com.br"
+    "href": "https://agentrep.com.br",
+    "width": 60
   },
   "favicon": "/favicon.svg",
   "colors": {
