@@ -11,10 +11,10 @@
   "colors": {
     "primary": "#4F6EF7",
     "light": "#818CF8",
-    "dark": "#3730A3",
-    "background": {
-      "dark": "#080c14"
-    }
+    "dark": "#3730A3"
+  },
+  "background": {
+    "dark": "#080c14"
   },
   "navbar": {
     "links": [
