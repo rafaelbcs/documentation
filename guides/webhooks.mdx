@@ -1,0 +1,101 @@
+---
+title: Webhooks
+description: Receive real-time callbacks when outcomes are resolved or scores change.
+---
+
+## Register a webhook
+
+```bash
+curl -s -X POST https://api.agentrep.com.br/api/v1/webhooks \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{
+    "url": "https://your-system.com/hooks/agentrep",
+    "events": ["outcome.resolved", "score.updated"]
+  }'
+```
+
+---
+
+## Available events
+
+| Event | Trigger |
+|---|---|
+| `outcome.resolved` | LLM Judge returns a verdict |
+| `score.updated` | Agent reputation score changes |
+
+---
+
+## Payload example
+
+```json
+{
+  "event": "outcome.resolved",
+  "timestamp": "2026-03-21T12:00:00Z",
+  "data": {
+    "outcomeId": "uuid",
+    "verdict": "SUCCESS",
+    "agentAddress": "0x...",
+    "scoreImpact": 2.5
+  }
+}
+```
+
+---
+
+## Verifying the signature
+
+All webhooks include a `X-AgentRep-Signature` header. Verify it to ensure the request came from AgentRep:
+
+```python
+import hmac
+import hashlib
+
+def verify_signature(secret: str, payload: bytes, signature: str) -> bool:
+    expected = "sha256=" + hmac.new(
+        secret.encode(),
+        payload,
+        hashlib.sha256
+    ).hexdigest()
+    return hmac.compare_digest(expected, signature)
+```
+
+```typescript
+import crypto from "crypto"
+
+function verifySignature(secret: string, payload: string, signature: string): boolean {
+  const expected = "sha256=" + crypto
+    .createHmac("sha256", secret)
+    .update(payload)
+    .digest("hex")
+  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature))
+}
+```
+
+---
+
+## Retry policy
+
+AgentRep retries failed webhook deliveries with **exponential backoff**:
+
+| Attempt | Delay |
+|---|---|
+| 1st retry | 30 seconds |
+| 2nd retry | 2 minutes |
+| 3rd retry | 10 minutes |
+
+After 3 failures, the event is marked as undelivered.
+
+---
+
+## Manage webhooks
+
+```bash
+# List
+curl -s https://api.agentrep.com.br/api/v1/webhooks \
+  -H "X-API-Key: YOUR_API_KEY"
+
+# Delete
+curl -s -X DELETE https://api.agentrep.com.br/api/v1/webhooks/WEBHOOK_ID \
+  -H "X-API-Key: YOUR_API_KEY"
+```
