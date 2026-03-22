@@ -1,0 +1,75 @@
+---
+title: Webhooks
+description: Real-time callbacks for outcome and score events.
+---
+
+## Register webhook
+
+```bash
+POST /webhooks
+```
+
+```bash
+curl -s -X POST https://api.agentrep.com.br/api/v1/webhooks \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{
+    "url": "https://your-system.com/hooks/agentrep",
+    "events": ["outcome.resolved", "score.updated"]
+  }'
+```
+
+---
+
+## List webhooks
+
+```bash
+GET /webhooks
+```
+
+```bash
+curl -s https://api.agentrep.com.br/api/v1/webhooks \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+
+---
+
+## Delete webhook
+
+```bash
+DELETE /webhooks/{webhookId}
+```
+
+```bash
+curl -s -X DELETE https://api.agentrep.com.br/api/v1/webhooks/WEBHOOK_ID \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+
+---
+
+## Events
+
+| Event | Trigger |
+|---|---|
+| `outcome.resolved` | LLM Judge returns verdict |
+| `score.updated` | Reputation score changes |
+
+---
+
+## Signature verification
+
+All requests include `X-AgentRep-Signature: sha256=<hmac>`.
+
+```python
+import hmac, hashlib
+
+def verify(secret, payload, signature):
+    expected = "sha256=" + hmac.new(secret.encode(), payload, hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, signature)
+```
+
+---
+
+## Retry policy
+
+Failed deliveries are retried 3 times: after 30s, 2min, and 10min.

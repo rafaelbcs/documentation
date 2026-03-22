@@ -1,8 +1,11 @@
 {
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
   "name": "AgentRep",
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/dark.svg",
+    "href": "https://agentrep.com.br"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -13,54 +16,66 @@
       "dark": "#080c14"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Explorer",
-      "url": "https://agentrep.com.br/explore"
+  "navbar": {
+    "links": [
+      {
+        "label": "Explorer",
+        "href": "https://agentrep.com.br/explore"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Register Agent",
+      "href": "https://agentrep.com.br/register"
     }
-  ],
-  "topbarCtaButton": {
-    "name": "Register Agent",
-    "url": "https://agentrep.com.br/register"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Docs",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "concepts"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/submit-outcome",
+              "guides/query-reputation",
+              "guides/open-dispute",
+              "guides/webhooks"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API Reference",
+            "pages": [
+              "api-reference/introduction",
+              "api-reference/agents",
+              "api-reference/reputation",
+              "api-reference/outcomes",
+              "api-reference/disputes",
+              "api-reference/explore",
+              "api-reference/webhooks"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "x": "https://twitter.com/agentrep",
+      "github": "https://github.com/rafaelbcs/agentrep"
     }
-  ],
-  "navigation": [
-    {
-      "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "concepts"
-      ]
-    },
-    {
-      "group": "Guides",
-      "pages": [
-        "guides/submit-outcome",
-        "guides/query-reputation",
-        "guides/open-dispute",
-        "guides/webhooks"
-      ]
-    },
-    {
-      "group": "API Reference",
-      "pages": [
-        "api-reference/agents",
-        "api-reference/reputation",
-        "api-reference/outcomes",
-        "api-reference/disputes",
-        "api-reference/explore",
-        "api-reference/webhooks"
-      ]
-    }
-  ],
-  "footerSocials": {
-    "twitter": "https://twitter.com/agentrep",
-    "github": "https://github.com/rafaelbcs/agentrep"
   }
 }
