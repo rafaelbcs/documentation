@@ -55,6 +55,17 @@
         ]
       },
       {
+        "tab": "SDKs",
+        "groups": [
+          {
+            "group": "SDKs",
+            "pages": [
+              "sdks/python"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "API Reference",
         "groups": [
           {
@@ -76,7 +87,7 @@
   "footer": {
     "socials": {
       "x": "https://twitter.com/agentrep",
-      "github": "https://github.com/rafaelbcs/agentrep"
+      "github": "https://github.com/rafaelbcs/agentrep-python"
     }
   }
 }
